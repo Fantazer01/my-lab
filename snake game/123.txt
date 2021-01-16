@@ -1,0 +1,21 @@
+typedef struct item {
+    int data1;
+    int data2;
+    struct item *next;
+} item;
+
+typedef struct list {
+    item *head;
+    item *tail;
+} list;
+
+void list_delete(list *list) {
+  item *ptr = list->head, *ptr_prev;
+  while (ptr)
+   {
+    ptr_prev = ptr;
+    ptr = ptr->next;
+    free(ptr_prev);
+   }
+  free(list);
+}
